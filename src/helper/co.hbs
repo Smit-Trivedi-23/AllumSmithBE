@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Order</title>
+    <style>
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+            border: 1px solid #000;
+            font-size: 10px;
+        }
+
+        header,
+        section,
+        footer {
+            border-bottom: 1px solid #000;
+        }
+
+        .container header {
+            display: flex;
+            gap: 5px;
+            text-align: center;
+        }
+
+        header .border {
+            border-right: 1px solid #000;
+        }
+
+        header p {
+            margin: 5px;
+        }
+
+        header .logo {
+            width: 30%;
+            padding: 10px;
+        }
+
+        .reciever-heading {
+            display: flex;
+            border-bottom: 1px solid #000;
+        }
+
+        .reciever-heading p {
+            width: 50%;
+            text-align: center;
+        }
+
+        .reciever-heading .border {
+            border-right: 1px solid #000;
+        }
+
+        .consignee-heading {
+            display: flex;
+            border-bottom: 1px solid #000;
+        }
+
+        .consignee-heading p {
+            width: 50%;
+            text-align: center;
+        }
+
+        .consignee-heading .border {
+            border-right: 1px solid #000;
+        }
+
+        header .company-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        h1,
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .tax-invoice {
+            display: flex;
+            padding-inline: 10px;
+        }
+
+        .tax-invoice .tax {
+            text-align: center;
+            width: 70%;
+        }
+
+        .reciever {
+            display: flex;
+        }
+
+        .reciever .border {
+            border-right: 1px solid #000;
+        }
+
+        .reciever .receiver-details {
+            width: 50%;
+            padding-inline: 10px;
+        }
+
+        .reciever .invoice-details {
+            width: 50%;
+            padding-inline: 10px;
+        }
+
+        .reciever .invoice-details .details {
+            display: flex;
+        }
+
+        .reciever .invoice-details .details .dates {
+            width: 50%;
+            display: flex;
+            gap: 10px;
+            text-align: center;
+            justify-content: start;
+            margin-right: 10px;
+            margin-left: 200px;
+        }
+
+        .reciever .invoice-details .details .text {
+            width: 50%;
+            display: flex;
+            gap: 10px;
+        }
+
+        p {
+            margin-block: 5px;
+        }
+
+        .receiver-details .text {
+            display: flex;
+            gap: 10px;
+        }
+
+        .receiver-details .text .text-title {
+            width: 15%;
+        }
+
+        .receiver-details .text .text-details {
+            width: 75%;
+        }
+
+        .consignee {
+            display: flex;
+        }
+
+        .consignee .border {
+            border-right: 1px solid #000;
+        }
+
+        .consignee .consignee-details {
+            width: 50%;
+            padding-inline: 10px;
+        }
+
+        .consignee .despatch-details {
+            width: 50%;
+            padding-inline: 10px;
+        }
+
+        .consignee .despatch-details .details {
+            display: flex;
+        }
+
+        .consignee .despatch-details .details .dates {
+            width: 50%;
+            display: flex;
+            gap: 10px;
+            text-align: center;
+            justify-content: start;
+            margin-right: 10px;
+            margin-left: 200px;
+        }
+
+        .consignee .despatch-details .details .text {
+            width: 50%;
+            display: flex;
+            gap: 10px;
+        }
+
+        .consignee-details .text {
+            display: flex;
+            gap: 10px;
+        }
+
+        .consignee-details .text .text-title {
+            width: 15%;
+        }
+
+        .wmproducts{
+            margin-top: 10px;
+        }
+
+        .consignee-details .text .text-details {
+            width: 75%;
+        }
+
+        .product-details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .product-details th {
+            border-bottom: 1px solid #000;
+            border-right: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+            width: 30%;
+        }
+
+        .product-details td {
+            padding: 8px;
+            border-right: 1px solid #000;
+            text-align: center;
+        }
+
+        .product-details th:first-child,
+        .product-details td:first-child {
+            border-right: 1px solid #000;
+        }
+
+        .product-details tbody td:not(:last-child) {
+            border-right: 1px solid #000;
+        }
+
+        .product-details td:nth-child(2) {
+            text-align: left;
+        }
+
+        .product-details tfoot td {
+            border-top: 1px solid #000;
+            border-right: 1px solid #000;
+        }
+
+        .product-details .small-column {
+            width: 5%;
+        }
+
+        footer {
+            border-top: 1px solid #000;
+            display: flex;
+        }
+
+        footer .border {
+            border-right: 1px solid #000;
+            padding: 10px;
+        }
+
+        footer .terms {
+            width: 70%;
+            padding: 10px;
+        }
+
+        footer .footer-logo {
+            width: 30%;
+            padding: 10px;
+        }
+
+        .bill-amount {
+            border-bottom: none;
+            display: flex;
+        }
+
+        .bill-amount .amount-details {
+            width: 70%;
+            padding: 10px;
+        }
+
+        .bill-amount .total {
+            width: 30%;
+            padding: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .sub-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sub-column span {
+            font-weight: bold;
+        }
+
+        .bill-amount table .large {
+            width: 20%;
+        }
+
+        .bill-amount table .medium {
+            width: 15%;
+        }
+
+        .bill-amount table .small {
+            width: 10%;
+        }
+
+        .bill-amount .border {
+            border-right: 1px solid #000;
+        }
+
+        .bill-amount .total .total-details {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bill-amount .total .grand-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 130px;
+        }
+
+        .bank-details {
+            border-top: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="data:image/png;base64,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"
+                    alt="smit-alluminium-logo" />
+            </div>
+            <div class="border"></div>
+            <div class="company-details">
+                <h1>SMIT ALLUMINIUM</h1>
+                <p>
+                    C-19,Bhagyodaya Part-2,Nand Bunglow Road, Ghatlodiya,
+                    Ahmedabad, GODOWN : 259/2/2, B /H. Kitchen Express,, Nr. Indian Gas
+                    Godown, Santej Vadsar Road, SANTEJ
+                </p>
+                <p>Contact : E-Mail : smitalluminum@ymail.com</p>
+                <p>
+                    GSTIN : 24AIMPP7660D1Z3, PAN NO. : AIMPP7660D, State : Gujarat, Code
+                    : 24
+                </p>
+            </div>
+        </header>
+        <section class="tax-invoice">
+            <p><b>GSTIN</b> : 24AIMPP7660D1Z3</p>
+            <p class="tax"><b>Tax Invoice</b></p>
+        </section>
+        <div class="reciever-heading">
+            <p>Details of Receiver (Billed to)</p>
+            
+        </div>
+        <section class="reciever">
+            <div class="receiver-details">
+                <div class="text">
+                    <p class="text-title"><b>Name</b></p>
+                    <p class="text-details">: {{customer.name}}</p>
+                </div>
+                <div class="text">
+                    <p class="text-title"><b>Address</b></p>
+                    <p class="text-details">
+                        : {{customer.address_line1}},
+                        {{customer.address_line2}}, {{customer.city}},
+                        {{customer.state}}, {{customer.zipcode}}
+                    </p>
+                </div>
+                <div class="text">
+                    <p class="text-title"><b>Mob. No.</b></p>
+                    <p class="text-details">: {{customer.phone}}</p>
+                </div>
+                <div class="text">
+                    <p class="text-title"><b>Email ID</b></p>
+                    <p>: {{customer.email}}</p>
+                </div>
+                <div class="text">
+                    <p class="text-title"><b>State</b></p>
+                    <p class="text-details">: {{customer.state}}, Code : {{customer.zipcode}}</p>
+                </div>
+                <div class="text">
+                    <p class="text-title"><b>GST No.</b></p>
+                    <p class="text-details">: {{customer.gst_number}}</p>
+                </div>
+                <div class="text">
+                    <p class="text-title"><b>Order No.</b></p>
+                    <p class="text-details">: {{customerOrderNumber}}</p>
+                </div>
+            </div>
+           
+            
+        </section>
+        
+        <section class="product-details">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="small-column">Serial Number</th>
+                        <th>Product Name</th>
+                        <th class="small-column">Coating</th>
+                        <th class="small-column">Color</th>
+                        <th class="small-column">Product Code</th>
+                        <th class="small-column">Quantity</th>
+                        <th class="small-column">Pcs</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each entries}}
+                    <tr>
+                        <td>{{inc @index}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{coating.name}}</td>
+                        <td>{{color.name}}</td>
+                        <td>{{product.productCode}}</td>
+                        <td>{{calcTotalWeight product.weight quantity}} KG</td>
+                        <td>{{quantity}} Pcs</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style="font-weight: 700;">Estimate Weight: </td>
+                        <td>{{getEstimateWeight entries}}</td>
+                        <!-- Adjust this value according to the total amount -->
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+        {{#if wmproducts}}
+        <section class="product-details wmproducts">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="small-column">Serial Number</th>
+                        <th colspan="3">Customer's Product Name</th>
+                        <th class="small-column">Pcs</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each wmproducts}}
+                    <tr>
+                        <td>{{inc @index}}</td>
+                        <td colspan="3">{{product}}</td>
+                        <td>{{quantity}} Pcs</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                {{!-- <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <!-- Adjust this value according to the total amount -->
+                    </tr>
+                </tfoot> --}}
+            </table>
+        </section>
+        {{/if}}
+        <div class="bank-details">
+            <p>BANK DETAIL : Deutsche Bank (C.G. ROAD BRANCH )</p>
+            <p>A/C. NO : 100040767690019</p>
+            <p>IFSC CODE : DEUT0406PBC</p>
+        </div>
+        <footer>
+            <div class="terms">
+                <h2>Terms and Conditions</h2>
+                <p>1- OUR RISK & RISPONSIBILITYCASES OF GOODS FROM OUR PREMISES.</p>
+                <p>
+                    2 - GOODS ONCE SOLD WILL NOT BE TAKEN BACK UNDER ANY CIRCUMSTACES.
+                </p>
+                <p>
+                    3 - INTEREST WILL BE CHARGED 24% PER ANNUME IF NOT PAID WITHIN 7
+                    DAYS
+                </p>
+                <p>4 - SUBJECT TO AHMEDABAD JURISDICTION ONLY.</p>
+                <p>5 - THIS IS A COMPUTER GENERATED INVOICE.</p>
+                <p style="margin-top: 40px">
+                    RECEIVER SIGNATORY _________________________________
+                </p>
+            </div>
+            <div class="border"></div>
+            <div class="footer-logo">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde maiores
+                odio magni eaque delectus est rerum recusandae aliquam, blanditiis
+                doloribus, distinctio ut, hic libero officiis qui quibusdam? Tempora
+                iure error laborum, adipisci, ea ducimus voluptatibus soluta neque
+                sunt optio, ipsam praesentium perferendis perspiciatis dolore libero
+                unde enim eius nobis tenetur.
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
